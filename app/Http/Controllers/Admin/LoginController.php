@@ -13,18 +13,20 @@ class LoginController extends Controller
 
 
   }
-  
+
   public function login(LoginRequest $request){
     if(auth()->guard('admin')->attempt(['username'=>$request->input('username'),'password'=>$request->input('password')]))
  {
-  return redirect()->route('admin.dashboard'); 
+  return redirect()->route('admin.dashboard');
 
  }else{
-  return redirect()->route('admin.showlogin'); 
+  return redirect()->route('admin.showlogin');
  }
 
+  }
 
-
+  public function privacy(){
+    return view('admin.privacy');
   }
 
   public function logout(){

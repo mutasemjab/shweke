@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\DriverController;
 use App\Http\Controllers\Admin\OrderController;
+use App\Http\Controllers\Admin\SmsController;
 
 
 
@@ -54,6 +55,9 @@ Route::post('/order/update/{id}',[OrderController::class,'update'])->name('admin
 Route::get('/order/delete/{id}',[OrderController::class,'delete'])->name('admin.order.delete');
 /*           end code                */
 
+Route::get('/send-sms/create', [SmsController::class,'createSms'])->name('admin.sms.create');
+Route::post('/send-sms/store', [SmsController::class,'sendSms'])->name('admin.sms.store');
+
 });
 
 
@@ -62,6 +66,7 @@ Route::get('/order/delete/{id}',[OrderController::class,'delete'])->name('admin.
 Route::group(['namespace'=>'Admin','prefix'=>'admin','middleware'=>'guest:admin'],function(){
 Route::get('login',[LoginController::class,'show_login_view'])->name('admin.showlogin');
 Route::post('login',[LoginController::class,'login'])->name('admin.login');
+Route::get('privacy',[LoginController::class,'privacy'])->name('admin.privacy');
 
 });
 

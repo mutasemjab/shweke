@@ -44,7 +44,6 @@ class OrderController extends Controller
 
 
             if($order->save()){
-                event(new OrderCreated($order));
                 return redirect()->route('admin.order.index')->with(['success' => 'order created']);
 
             }else{
